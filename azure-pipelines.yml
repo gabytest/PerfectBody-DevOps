@@ -29,7 +29,6 @@ steps:
     projectFile: '**/PerfectBody.Android.csproj'
     outputDirectory: '$(outputDirectory)'
     configuration: '$(buildConfiguration)'
-    jdkOption: 'JDKVersion'
 
 - task: MSBuild@1
   inputs:
