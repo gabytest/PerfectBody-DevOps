@@ -34,7 +34,7 @@ steps:
 
 - task: XamarinAndroid@1
   inputs:
-    projectFile: '**/PerfectBody.Android.csproj'
+    projectFile: '**/*Droid*.csproj'
     outputDirectory: '$(outputDirectory)'
     configuration: '$(buildConfiguration)'
 
