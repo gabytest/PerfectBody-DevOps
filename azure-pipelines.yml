@@ -21,7 +21,8 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'restore'
-    restoreSolution: '**/*.sln'
+    restoreSolution: '**\*.sln'
+    feedsToUse: 'select'
 
 - task: XamarinAndroid@1
   inputs:
