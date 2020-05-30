@@ -27,8 +27,8 @@ steps:
 - task: XamarinAndroid@1
   inputs:
     projectFile: '**/PerfectBody.Android.csproj'
-    outputDirectory: '$(build.binariesdirectory)/$(BuildConfiguration)'
-    configuration: '$(BuildConfiguration)'
+    outputDirectory: '$(outputDirectory)'
+    configuration: '$(buildConfiguration)'
 
 - task: MSBuild@1
   inputs:
