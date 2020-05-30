@@ -6,8 +6,16 @@
 trigger:
 - master
 
+#pool:
+#  vmImage: 'macos-latest'
 pool:
-  vmImage: 'macos-latest'
+  demands:
+  - MSBuild
+  - Xamarin.Android
+  - msbuild
+  - vstest
+  - java
+  - JDK
 
 variables:
   buildConfiguration: 'Release'
