@@ -4,41 +4,41 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/xamarin
 
 trigger:
-  - master
+- master
 
 #pool:
 #  vmImage: 'macos-latest'
-  pool:
-    demands:
-    - MSBuild
-    - Xamarin.Android
-    - msbuild
-    - vstest
-    - java
-    - JDK
+pool:
+  demands:
+  - MSBuild
+  - Xamarin.Android
+  - msbuild
+  - vstest
+  - java
+  - JDK
 
-  variables:
-    buildConfiguration: 'Release'
-    outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
+variables:
+  buildConfiguration: 'Release'
+  outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
 
-  steps:
-  - task: NuGetToolInstaller@1
-    inputs:
-      versionSpec: '4.4.1'
+steps:
+- task: NuGetToolInstaller@1
+  inputs:
+    versionSpec: '4.4.1'
 
-  - task: NuGetCommand@2
-    inputs:
-      command: 'restore'
-      restoreSolution: '**\*.sln'
-      feedsToUse: 'select'
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: '**\*.sln'
+    feedsToUse: 'select'
 
-  - task: XamarinAndroid@1
-    inputs:
-      projectFile: '**/*PerfectBody.Android.csproj'
-      outputDirectory: '$(outputDirectory)'
-      configuration: '$(buildConfiguration)'
+- task: XamarinAndroid@1
+  inputs:
+    projectFile: '**/*PerfectBody.Android.csproj'
+    outputDirectory: '$(outputDirectory)'
+    configuration: '$(buildConfiguration)'
 
-  - task: MSBuild@1
-    inputs:
-      solution: '**/PerfectBody.UnitTests.csproj'
-      configuration: '$(buildConfiguration)'
+- task: MSBuild@1
+  inputs:
+    solution: '**/PerfectBody.UnitTests.csproj'
+    configuration: '$(buildConfiguration)'
